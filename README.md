@@ -1,10 +1,12 @@
 # Custom bash-profile PS1 prompt
 Customised terminal colorized and git-aware bash profile by modifying the PS1 prompts.
 
-Test on **MacOSX** only so far.
+Tested only on **MacOSX** so far.
 
 ## Implementation
-To make it work on a MacOSX, add the following line to `~/.bash_profile`
+Copy the `.bash_profile` to the home directory.
+
+To make this script work on a MacOSX, add the following line to `~/.bash_profile`
 ```
 source ~/.bashrc
 ```
