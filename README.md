@@ -13,4 +13,4 @@ source ~/.bashrc
 and restart terminal.
 
 ## Further customization
-In the `~/.bash_profile`, modify the PS1 variable. There are plenty of sources on the internet on customizing the PS1 prompt to your liking.
+In the `~/.bashrc`, modify the PS1 variable. There are plenty of sources on the internet on customizing the PS1 prompt to your liking.
