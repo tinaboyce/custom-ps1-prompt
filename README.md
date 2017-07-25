@@ -4,7 +4,7 @@ Customised terminal colorized and git-aware bash profile by modifying the PS1 pr
 Tested only on **MacOSX** so far.
 
 ## Implementation
-Copy the `.bash_profile` to the home directory.
+Copy the `.bashrc` to the home directory.
 
 To make this script work on a MacOSX, add the following line to `~/.bash_profile`
 ```
