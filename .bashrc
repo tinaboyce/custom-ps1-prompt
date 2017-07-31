@@ -16,10 +16,11 @@ function git-branch-name {
 }
 
 function git-dirty {
-    st=$(git status 2>/dev/null | tail -n 1)
-    if [[ ! $st =~ "working directory clean" ]]
-    then
-        echo "*"
+    st=$(git status --porcelain 2> /dev/null)
+    if [[ "$st" != "" ]]; then
+        git_dirty="*"
+    else
+        git_dirty=""
     fi
 }
 
