@@ -7,10 +7,6 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 PS1="\[\033[33m\]\u\[\033[00m\] \w\[\$(gitcolor)\]\$(gitify)\[\033[00m\] \$ "
 
 
-
-### Functions for custom git-aware command prompt ###
-# http://randy3k.github.io/blog/git-aware-prompt/ (Copied 16/12/16)
-
 function git-branch-name {
     echo `git symbolic-ref HEAD --short 2> /dev/null || (git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/.*(\(.*\))/\1/')`
 }
@@ -18,9 +14,9 @@ function git-branch-name {
 function git-dirty {
     st=$(git status --porcelain 2> /dev/null)
     if [[ "$st" != "" ]]; then
-        git_dirty="*"
+        echo "*"
     else
-        git_dirty=""
+        echo ""
     fi
 }
 
