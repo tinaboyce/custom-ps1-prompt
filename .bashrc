@@ -41,7 +41,17 @@ git_status() {
     [[ -n $(egrep '^\?\?' <<<"$status") ]] && output="$output?"
     [[ -n $(git stash list) ]] && output="${output}S"
     [[ -n $(git log --branches --not --remotes) ]] && output="${output}P"
-    [[ -n $output ]] && output="|$output"  # separate from branch name
+    output="${output}"$(git_status_behind)
+    [[ -n $output ]] && output="$output"  # separate from branch name
+    echo $output
+}
+
+git_status_behind() {
+    # - behind
+    local status="$(git status 2>/dev/null)"
+    local output=''
+    [[ $status =~ "behind" ]] && output="-"
+
     echo $output
 }
 
@@ -78,6 +88,10 @@ git_prompt() {
         local state=$(git_status)
         local color=$(git_color $state)
         # Now output the actual code to insert the branch and status
-        echo -e "\x01$color\x02[$branch$state]\x01\033[00m\x02"  # last bit resets color
+        if [[ -n $state ]]; then
+            echo -e "\x01$color\x02[$branch $state]\x01\033[00m\x02"  # last bit resets color
+        else
+            echo -e "\x01$color\x02[$branch]\x01\033[00m\x02"  # last bit resets color
+        fi
     fi
 }
